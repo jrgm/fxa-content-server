@@ -10,7 +10,7 @@ define([
   // override the main config file and adjust it to suit Sauce Labs
   intern.useSauceConnect = true;
   intern.webdriver.port = 4445;
-  intern.capabilities: {},
+  intern.capabilities: {};
 
   intern.environments = [
     { browserName: 'firefox', platform: [ 'Windows 7' ] }
