@@ -1,6 +1,8 @@
 language: node_js
+
 node_js:
   - "0.10"
+
 env:
   global:
     # Sauce Labs are OK with this and it is currently necessary to expose this information for testing pull requests;
@@ -14,12 +16,12 @@ before_install:
   - sudo apt-get install libgmp3-dev daemontools
 
 install:
-# install everything for full dev in the fxa-content-server.
+  # install everything for full dev in the fxa-content-server.
   - npm install --silent
-# copy over the configuration that can be used to start the server.
+  # copy over the configuration that can be used to start the server.
   - cp server/config/local.json-dist server/config/local.json
   - grunt l10n-create-json
-# install the resources necessary for the auth server.
+  # install the resources necessary for the auth server.
   - npm install --silent git://github.com/mozilla/fxa-auth-server.git
   - cd node_modules/fxa-auth-server
   - node ./scripts/gen_keys.js
@@ -31,19 +33,12 @@ install:
 script: 
   - grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote
 
-after_script:
-  - echo after_script
-  - echo @@@ 
-  - echo @@@ /tmp/fxa-auth-server.log
-  - echo @@@ 
+after_failure:
+  - echo ~*~ On failure, here are the webserver logs
+  - echo ~*~ /tmp/fxa-auth-server.log
   - cat /tmp/fxa-auth-server.log
-  - echo @@@ 
-  - echo @@@ /tmp/fxa-content-server.log
-  - echo @@@ 
+  - echo ~*~ /tmp/fxa-content-server.log
   - cat /tmp/fxa-content-server.log
 
-after_failure:
-  - echo ~*~ after_failure
-
 after_success:
-  - echo ~*~ after_failure
+  - echo ~*~ all tests pass
