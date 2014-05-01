@@ -31,7 +31,7 @@ install:
 
 # now run the tests!
 script: 
-  - (grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote) | tai64n | tai64nlocal
+  - grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote
 
 after_failure:
   - echo ~*~ On failure, here are the webserver logs
