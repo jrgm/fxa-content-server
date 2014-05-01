@@ -22,8 +22,22 @@ install:
   - npm install --silent git://github.com/mozilla/fxa-auth-server.git
   - cd node_modules/fxa-auth-server
   - node ./scripts/gen_keys.js
-  - LOG_LEVEL=error npm start &
+  - LOG_LEVEL=error npm start &>/tmp/fxa-auth-server.log &
   - cd ../..
-  - npm start &
+  - npm start &> /tmp/fxa-content-server.log &
+
 # now run the tests!
-script: grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote
+script: 
+  - grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote
+
+after_script:
+  - echo after_script
+  - echo @@@ 
+  - echo @@@ /tmp/fxa-auth-server.log
+  - echo @@@ 
+  - cat /tmp/fxa-auth-server.log
+  - echo @@@ 
+  - echo @@@ /tmp/fxa-content-server.log
+  - echo @@@ 
+  - cat /tmp/fxa-content-server.log
+
