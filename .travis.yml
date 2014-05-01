@@ -31,7 +31,7 @@ install:
 
 # now run the tests!
 script: 
-  - grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote
+  - (grunt validate-shrinkwrap && grunt lint && npm run-script test-server && npm run-script test-remote) | tai64n | tai64nlocal
 
 after_failure:
   - echo ~*~ On failure, here are the webserver logs
@@ -42,3 +42,7 @@ after_failure:
 
 after_success:
   - echo ~*~ all tests pass
+  - echo ~*~ /tmp/fxa-auth-server.log
+  - cat /tmp/fxa-auth-server.log
+  - echo ~*~ /tmp/fxa-content-server.log
+  - cat /tmp/fxa-content-server.log
