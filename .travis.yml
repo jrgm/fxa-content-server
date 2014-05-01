@@ -9,8 +9,9 @@ env:
     - SAUCE_ACCESS_KEY: ee5354a4-3d5e-47a0-84b0-0b7aaa12a720
     - DISABLE_ROUTE_LOGGING: true
 
+# daemontools is installed to get tai64nlocal timestamping
 before_install:
-  - sudo apt-get install libgmp3-dev
+  - sudo apt-get install libgmp3-dev daemontools
 
 install:
 # install everything for full dev in the fxa-content-server.
@@ -22,9 +23,9 @@ install:
   - npm install --silent git://github.com/mozilla/fxa-auth-server.git
   - cd node_modules/fxa-auth-server
   - node ./scripts/gen_keys.js
-  - LOG_LEVEL=error npm start &>/tmp/fxa-auth-server.log &
+  - LOG_LEVEL=error npm start 2>&1 | tai64n | tai64nlocal &>/tmp/fxa-auth-server.log &
   - cd ../..
-  - npm start &> /tmp/fxa-content-server.log &
+  - npm start 2>&1 | tai64n | tai64nlocal &> /tmp/fxa-content-server.log &
 
 # now run the tests!
 script: 
@@ -41,3 +42,8 @@ after_script:
   - echo @@@ 
   - cat /tmp/fxa-content-server.log
 
+after_failure:
+  - echo ~*~ after_failure
+
+after_success:
+  - echo ~*~ after_failure
