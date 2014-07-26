@@ -12,15 +12,17 @@ define([
   intern.environments = [];
   intern.functionalSuites = [];
   intern.suites = [
+    'tests/server/l10n'
+  ];
+/*
     'tests/server/templates',
     'tests/server/routes',
     'tests/server/ver.json.js',
     'tests/server/cookies_disabled',
-    'tests/server/l10n',
     'tests/server/metrics',
     'tests/server/metrics-collector-stderr',
     'tests/server/proxy'
-  ];
+*/
 
   return intern;
 });
