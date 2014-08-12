@@ -22,6 +22,7 @@ before_install:
 
 install:
   # install everything for full dev in the fxa-content-server.
+  - npm install grunt-contrib-imagemin
   - travis_retry npm install --silent
   # copy over the configuration that can be used to start the server.
   - cp server/config/local.json-dist server/config/local.json
