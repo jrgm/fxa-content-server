@@ -180,6 +180,34 @@ define([
     }, [ selector ], timeout);
   }
 
+  /**
+   * Wait for the value of a text field to appear.
+   *
+   * Usage:  ".then(FunctionalHelpers.waitForAttributeValue('#address', 'value'))
+   *
+   * @param {String} selector
+   *        QSA compatible selector string
+   * @param {String} attribute
+   *        Name of an element's attribute
+   */
+  function waitForAttributeValue(selector, attribute, timeout) {
+    timeout = timeout || 10000;
+
+    return pollUntil(function (selector) {
+      /* global document */
+      var match = document.querySelectorAll(selector);
+
+      if (match.length > 1) {
+        throw new Error('Multiple elements matched. Make a more precise selector');
+      }
+
+      var value = match[0] && match[0].getAttribute('value');
+
+      return value || null;
+
+    }, [ selector ], timeout);
+  }
+
   function getVerificationLink(user, index) {
     if (/@/.test(user)) {
       user = TestHelpers.emailToUser(user);
@@ -494,6 +522,7 @@ define([
     clearBrowserState: clearBrowserState,
     clearSessionStorage: clearSessionStorage,
     visibleByQSA: visibleByQSA,
+    waitForAttributeValue: waitForAttributeValue,
     pollUntil: pollUntil,
     getVerificationLink: getVerificationLink,
     getVerificationHeaders: getVerificationHeaders,
