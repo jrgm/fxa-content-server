@@ -45,7 +45,7 @@ define([
 
   function waitForDesktopLogin(context, redirect) {
     // This will listen for the login event triggered by the submit below
-    return context.get('remote')
+    return context.remote
       .execute(function (URL) {
         /* global addEventListener,window,sessionStorage */
         addEventListener('FirefoxAccountsCommand', function (e) {
@@ -88,7 +88,7 @@ define([
     'sign in twice, on second attempt email will be cached': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN))
         .findByCssSelector('form input.email')
         .click()
@@ -130,7 +130,7 @@ define([
     'sign in first in sync context, on second attempt credentials will be cached': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN_DESKTOP))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -163,7 +163,7 @@ define([
     },
 
     'sign in once, use a different account': function () {
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN))
         .findByCssSelector('form input.email')
         .click()
@@ -233,7 +233,7 @@ define([
     'sign in with cached credentials but with an expired session': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN_DESKTOP))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -303,7 +303,7 @@ define([
       var email = TestHelpers.createEmail();
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNUP_DESKTOP))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -351,7 +351,7 @@ define([
     'unverified cached signin redirects to confirm email': function () {
       var email = TestHelpers.createEmail();
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNUP))
         .findByCssSelector('form input.email')
         .clearValue()
@@ -398,7 +398,7 @@ define([
     'sign in on desktop then sign in with prefill does not show picker': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN_DESKTOP))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -469,7 +469,7 @@ define([
     'sign in with desktop context then no context, desktop credentials should not persist': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN_DESKTOP))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -540,7 +540,7 @@ define([
     'overrule cached credentials': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_SIGNIN))
         .findByCssSelector('form input.email')
           .click()

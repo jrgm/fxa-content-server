@@ -30,7 +30,7 @@ define([
       // timeout after 300 seconds
       this.timeout = 300000;
 
-      return this.get('remote')
+      return this.remote
         .setFindTimeout(this.timeout)
         .get(require.toUrl(url))
         .refresh()
@@ -76,7 +76,7 @@ define([
     var spawn = child_process.spawn;
 
     console.log('Sending code coverage to coveralls.io');
-    context.get('remote')
+    context.remote
       // get code coverage data
       .execute(function () {
         /* global window */
@@ -112,7 +112,7 @@ define([
 
     console.log('Validating code coverage...');
     context
-      .get('remote')
+      .remote
       .findByCssSelector('.grand-total .rs')
       .getVisibleText()
       .then(function (text) {

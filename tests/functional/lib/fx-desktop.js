@@ -58,7 +58,7 @@ define([
   }
 
   function testIsBrowserNotifiedOfLogin(context, email, options) {
-    return context.get('remote')
+    return context.remote
       .findByCssSelector('#message-login')
         .getProperty('innerText')
         .then(function (innerText) {

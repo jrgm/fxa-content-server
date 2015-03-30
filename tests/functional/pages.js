@@ -66,7 +66,7 @@ define([
 
   var visitFn = function (path) {
     return function () {
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(url + path))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .findByCssSelector('#stage header')

@@ -55,7 +55,7 @@ define([
           // signup page. If a fresh signup page is not forced, the
           // bounced_email tests try to sign up using the Sync broker,
           // resulting in a channel timeout.
-          self.get('remote')
+          self.remote
             .get(require.toUrl(SIGNIN_URL))
 
             .findByCssSelector('#fxa-signin-header')
@@ -67,7 +67,7 @@ define([
 
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -121,7 +121,7 @@ define([
     'signup, verify same browser with original tab closed': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -162,7 +162,7 @@ define([
     'signup, verify same browser by replacing the original tab': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -181,7 +181,7 @@ define([
           return FunctionalHelpers.getVerificationLink(email, 0);
         })
         .then(function (verificationLink) {
-          return self.get('remote').get(require.toUrl(verificationLink));
+          return self.remote.get(require.toUrl(verificationLink));
         })
 
         .findByCssSelector('#fxa-sign-up-complete-header')
@@ -192,7 +192,7 @@ define([
     'signup, verify different browser - from original tab\'s P.O.V.': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -224,7 +224,7 @@ define([
     'signup, verify different browser - from new browser\'s P.O.V.': function () {
       var self = this;
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)
@@ -255,7 +255,7 @@ define([
           return FunctionalHelpers.getVerificationLink(email, 0);
         })
         .then(function (link) {
-          return self.get('remote').get(link);
+          return self.remote.get(link);
         })
 
         // user should be redirected to "Success!" screen
@@ -273,7 +273,7 @@ define([
 
     'choose option to customize sync': function () {
       var self = this;
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .execute(listenForFxaCommands)
 
@@ -303,7 +303,7 @@ define([
 
     'force customize sync checkbox to be checked': function () {
       var url = (PAGE_URL += '&customizeSync=true');
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(url))
 
         .findByCssSelector('#customize-sync')

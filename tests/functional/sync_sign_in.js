@@ -68,7 +68,7 @@ define([
       var self = this;
       return verifyUser(email, 0)
         .then(function () {
-          return self.get('remote')
+          return self.remote
             .get(require.toUrl(PAGE_URL))
             .setFindTimeout(intern.config.pageLoadTimeout)
             .execute(listenForFxaCommands)
@@ -90,7 +90,7 @@ define([
     'unverified': function () {
       var self = this;
 
-      return self.get('remote')
+      return self.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .execute(listenForFxaCommands)

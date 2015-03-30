@@ -24,7 +24,7 @@ define([
 
     'start at signup': function () {
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(SIGNUP_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .findById('fxa-pp')
@@ -46,7 +46,7 @@ define([
 
     'browse directly to page - no back button': function () {
       var self = this;
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(PAGE_URL))
         .setFindTimeout(intern.config.pageLoadTimeout)
 

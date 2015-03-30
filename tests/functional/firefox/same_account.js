@@ -39,7 +39,7 @@ define([
        * Part 1: Sign up
        */
 
-      return self.get('remote')
+      return self.remote
         .setFindTimeout(intern.config.pageLoadTimeout)
         // open Firefox preferences
         .get(require.toUrl('about:preferences'))
@@ -100,7 +100,7 @@ define([
             .then(function (emails) {
               var emailLink = emails[0].headers['x-link'];
 
-              return self.get('remote').execute(function (emailLink) {
+              return self.remote.execute(function (emailLink) {
                 /* global window */
                 window.open(emailLink, 'newwindow');
 

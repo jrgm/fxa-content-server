@@ -20,7 +20,7 @@ define([
 
     'start at legal page': function () {
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(url))
         .setFindTimeout(intern.config.pageLoadTimeout)
         .findByCssSelector('a[href="/legal/terms"]')
@@ -47,7 +47,7 @@ define([
 
     'start at terms page': function () {
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(url + '/terms'))
 
         .findByCssSelector('#main-content')
@@ -64,7 +64,7 @@ define([
 
     'start at privacy page': function () {
 
-      return this.get('remote')
+      return this.remote
         .get(require.toUrl(url + '/privacy'))
 
         .findByCssSelector('#main-content')

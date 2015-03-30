@@ -25,7 +25,7 @@ define([
   var client;
 
   function fillOutDeleteAccount(context, password) {
-    return context.get('remote')
+    return context.remote
       .findByCssSelector('form input.password')
         .click()
         .type(password)
@@ -192,7 +192,7 @@ define([
           return FunctionalHelpers.getVerificationLink(email, 0);
         })
         .then(function (verificationLink) {
-          return self.get('remote').get(require.toUrl(verificationLink));
+          return self.remote.get(require.toUrl(verificationLink));
         })
 
         .findByCssSelector('#fxa-account-unlock-complete-header')
@@ -229,7 +229,7 @@ define([
           return FunctionalHelpers.getVerificationLink(email, 0);
         })
         .then(function (verificationLink) {
-          return self.get('remote').get(require.toUrl(verificationLink));
+          return self.remote.get(require.toUrl(verificationLink));
         })
 
         // new browser dead ends at the 'account verified' screen.
