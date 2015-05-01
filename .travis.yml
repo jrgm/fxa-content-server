@@ -1,10 +1,9 @@
 language: node_js
 node_js:
   - "0.10"
+  - "0.12"
 addons:
-  firefox: "38.0"
-  apt_packages:
-    - libgmp-dev
+  firefox: "38.0.1"
 env:
   global:
     - DISABLE_ROUTE_LOGGING=true
@@ -53,3 +52,8 @@ script:
   - grunt lint
   - travis_retry npm run test-travis
   - travis_retry npm run test-server
+
+matrix:
+  allow_failures:
+    - node_js: "0.12"
+  fast_finish: true
