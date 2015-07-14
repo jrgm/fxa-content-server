@@ -29,9 +29,9 @@ echo "FXA_FIREFOX_BINARY $FXA_FIREFOX_BINARY"
 echo "GIT_COMMIT         $GIT_COMMIT"
 
 rm -rf fxa-content-server-"$FXA_TEST_NAME"
-git clone https://github.com/mozilla/fxa-content-server.git -b master fxa-content-server-"$FXA_TEST_NAME"
+git clone https://github.com/jrgm/fxa-content-server.git -b tests-briefer fxa-content-server-"$FXA_TEST_NAME"
 cd fxa-content-server-"$FXA_TEST_NAME"
-git checkout "$GIT_COMMIT"
+git checkout tests-briefer
 git show --summary
 
 npm config set cache ~/.fxacache
