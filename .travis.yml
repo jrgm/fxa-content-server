@@ -5,7 +5,7 @@ node_js:
   - "0.12"
 
 addons:
-  firefox: "38.0"
+  firefox: "39.0"
 env:
   global:
     - DISABLE_ROUTE_LOGGING=true
