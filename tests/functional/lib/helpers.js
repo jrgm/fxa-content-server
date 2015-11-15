@@ -227,7 +227,7 @@ define([
     }
 
     // restmail takes an index that is 1 based instead of 0 based.
-    return restmail(EMAIL_SERVER_ROOT + '/mail/' + user, index + 1)()
+    return restmail(EMAIL_SERVER_ROOT + '/mail/' + user + '@restmail2.dev.lcip.org', index + 1)()
       .then(function (emails) {
         return emails[index].headers;
       });

@@ -21,7 +21,7 @@ define([], function () {
     if (! template) {
       template = 'signin{id}';
     }
-    return template.replace('{id}', Math.random()) + '@restmail.net';
+    return template.replace('{id}', Math.random()) + '@restmail2.dev.lcip.org';
   }
 
   function emailToUser(email) {

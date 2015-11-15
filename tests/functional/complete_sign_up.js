@@ -42,7 +42,7 @@ define([
           uid = accountData.uid;
         })
 
-        .then(restmail(EMAIL_SERVER_ROOT + '/mail/' + user))
+        .then(restmail(EMAIL_SERVER_ROOT + '/mail/' + user + '@restmail2.dev.lcip.org'))
 
         .then(function (emails) {
           code = emails[0].html.match(/code=([A-Za-z0-9]+)/)[1];
@@ -135,7 +135,7 @@ define([
           uid = accountData.uid;
         })
 
-        .then(restmail(EMAIL_SERVER_ROOT + '/mail/' + user))
+        .then(restmail(EMAIL_SERVER_ROOT + '/mail/' + user + '@restmail2.dev.lcip.org'))
 
         .then(function (emails) {
           code = emails[0].html.match(/code=([A-Za-z0-9]+)/)[1];
