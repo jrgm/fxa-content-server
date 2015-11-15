@@ -35,7 +35,7 @@ define([
   function setTokenAndCodeFromEmail(emailAddress, emailNumber) {
     var fetchCount = emailNumber + 1;
     var user = TestHelpers.emailToUser(emailAddress);
-    return restmail(EMAIL_SERVER_ROOT + '/mail/' + user, fetchCount)()
+    return restmail(EMAIL_SERVER_ROOT + '/mail/' + user + '@restmail2.dev.lcip.org', fetchCount)()
       .then(function (emails) {
         // token and code are hex values
         token = emails[emailNumber].html.match(/token=([a-f\d]+)/)[1];
@@ -223,7 +223,7 @@ define([
           .click()
         .end()
 
-        .then(restmail(EMAIL_SERVER_ROOT + '/mail/' + user, 2))
+        .then(restmail(EMAIL_SERVER_ROOT + '/mail/' + user + '@restmail2.dev.lcip.org', 2))
 
         // Success is showing the success message
         .then(FunctionalHelpers.testSuccessWasShown(this))
