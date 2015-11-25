@@ -52,6 +52,6 @@ $FXA_FIREFOX_BINARY --version 2>/dev/null # squelch annoying 'GLib-CRITICAL **' 
     fxaOauthApp="$FXA_OAUTH_APP_ROOT" \
     fxaUntrustedOauthApp="$FXA_UNTRUSTED_OAUTH_APP_ROOT" \
     fxaIframeOauthApp="${FXA_OAUTH_APP_ROOT}iframe" \
-    fxaEmailRoot="http://restmail2.dev.lcip.org" \
+    fxaEmailRoot="http://restmail.net" \
     fxaProduction="true" \
     firefoxBinary="$FXA_FIREFOX_BINARY"
