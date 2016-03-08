@@ -81,5 +81,4 @@ $FXA_FIREFOX_BINARY --version 2>/dev/null # squelch annoying 'GLib-CRITICAL **' 
     fxaEmailRoot="http://restmail.net" \
     fxaProduction="true" \
     firefoxBinary="$FXA_FIREFOX_BINARY" \
-    useTeamCityReporter=true \
-    grep='preverified'
+    useTeamCityReporter=true
