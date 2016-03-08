@@ -47,7 +47,7 @@ curl -s $FXA_AUTH_VERSION
 echo ""
 
 rm -rf fxa-content-server-"$FXA_TEST_NAME"
-git clone https://github.com/mozilla/fxa-content-server.git -b master fxa-content-server-"$FXA_TEST_NAME"
+git clone https://github.com/jrgm/fxa-content-server.git -b master fxa-content-server-"$FXA_TEST_NAME"
 cd fxa-content-server-"$FXA_TEST_NAME"
 git checkout $GIT_COMMIT
 git show --summary
@@ -60,7 +60,7 @@ npm install              \
   bower@1.7.1            \
   convict@1.0.2          \
   firefox-profile@0.3.11 \
-  intern@3.0.6           \
+  jrgm/intern.git#issue-591-teamcity-reporter-error-stack \
   request@2.67.0         \
   sync-exec@0.6.1        \
   zaach/node-XMLHttpRequest.git#onerror
@@ -80,4 +80,5 @@ $FXA_FIREFOX_BINARY --version 2>/dev/null # squelch annoying 'GLib-CRITICAL **' 
     fxaIframeOauthApp="${FXA_OAUTH_APP_ROOT}iframe" \
     fxaEmailRoot="http://restmail.net" \
     fxaProduction="true" \
-    firefoxBinary="$FXA_FIREFOX_BINARY"
+    firefoxBinary="$FXA_FIREFOX_BINARY" \
+    useTeamCityReporter=true

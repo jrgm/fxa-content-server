@@ -70,5 +70,11 @@ function (intern, topic, firefoxProfile) {
     config.capabilities.firefox_binary = args.firefoxBinary; //eslint-disable-line camelcase
   }
 
+  if (args.useTeamCityReporter) {
+    config.reporters = [ 
+      { id: 'TeamCity' },
+    ];
+  }
+
   return config;
 });
