@@ -71,7 +71,7 @@ function (intern, topic, firefoxProfile) {
   }
 
   if (args.useTeamCityReporter) {
-    config.reporters = [ 
+    config.reporters = [
       { id: 'TeamCity' },
     ];
   }
